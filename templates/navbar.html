@@ -1,0 +1,20 @@
+<a href="/">
+    <h1>E-learner</h1>
+</a>
+ <style>
+input{
+    border-radius:25px;
+    height:25px;
+}
+</style>
+<form method="GET" action="{% url 'home' %}">
+    <input type="text" name="q" placeholder="search">
+
+</form>
+{% if request.user.is_authenticated %}
+<p>hello {{request.user}}</p>
+<a href="{% url 'logout' %}">Sign out</a>
+{% else %}
+<a href="{% url 'login' %}">Sign in</a>
+{% endif %}
+<hr>
