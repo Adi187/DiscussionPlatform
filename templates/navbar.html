@@ -1,20 +1,79 @@
-<a href="/">
-    <h1>E-learner</h1>
-</a>
- <style>
-input{
-    border-radius:25px;
-    height:25px;
+<style>
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222;
+    padding: 10px;
+    color: #fff;
 }
-</style>
-<form method="GET" action="{% url 'home' %}">
-    <input type="text" name="q" placeholder="search">
 
-</form>
-{% if request.user.is_authenticated %}
-<p>hello {{request.user}}</p>
-<a href="{% url 'logout' %}">Sign out</a>
-{% else %}
-<a href="{% url 'login' %}">Sign in</a>
-{% endif %}
+.navbar-brand {
+    text-decoration: none;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    border-radius: 25px;
+    width: 250px;
+    height: 30px;
+    padding: 5px;
+    margin-right: 10px;
+    border: none;
+    background-color: #555;
+    color: #fff;
+}
+
+.search-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.search-button i {
+    font-size: 14px;
+}
+
+.user-greeting {
+    margin-right: 10px;
+}
+
+.signin-link,
+.signout-link {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.signin-link:hover,
+.signout-link:hover {
+    text-decoration: underline;
+}
+
+
+</style>
+<nav class="navbar">
+    <a href="/" class="navbar-brand">
+        <h1>E-learner</h1>
+    </a>
+    <form method="GET" action="{% url 'home' %}" class="search-form">
+        <input type="text" name="q" class="search-input">
+        <button type="submit" class="search-button">Search</button>
+    </form>
+    <div class="user-section">
+        {% if request.user.is_authenticated %}
+        <p class="user-greeting">Hello, {{ request.user }}</p>
+        <a href="{% url 'logout' %}" class="signout-link">Sign out</a>
+        {% else %}
+        <a href="{% url 'login' %}" class="signin-link">Sign in</a>
+        {% endif %}
+    </div>
+</nav>
 <hr>

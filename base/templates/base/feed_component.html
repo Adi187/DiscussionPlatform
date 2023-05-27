@@ -1,16 +1,65 @@
+<style>
+    .room-entry {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+       
+   
+        margin-left: 20px;
+    }
+
+    .room-entry h5 {
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
+
+    .room-entry p {
+        margin-bottom: 10px;
+    }
+
+    .room-entry-buttons {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+    }
+
+    .room-entry-buttons a {
+        margin-right: 10px;
+        padding: 8px 12px;
+        border: 1px solid #fff;
+        border-radius: 5px;
+        color: #fff;
+        text-decoration: none;
+    }
+    .fix1{
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 10px;
+    }
+    a{
+        color: #fff;
+    }
+</style>
+
 <div>   
     {% for room in rooms %}
-    <div>
+    <div class="room-entry">
         {% if request.user == room.Chat_host %}
-        <a href="{% url 'update-room' room.id  %}">Edit</a>
-        <a href="{% url 'delete-room' room.id %}">Delete</a>
+        <div class="room-entry-buttons">
+            <a href="{% url 'update-room' room.id  %}">Edit</a>
+            <a href="{% url 'delete-room' room.id %}">Delete</a>
+        </div>
         {% endif %}
 
-        <span>@{{room.Chat_host.username}}</span>
-        <h5><a href="{% url 'room' room.id %}">{{room.name}}</a></h5>
-        <p>{{room.subject.name}}</p>
+        <div class="fix1"><span>@{{ room.Chat_host.username }}</span></div>
+        <h5><a href="{% url 'room' room.id %}">{{ room.name }}</a></h5>
+        <p>{{ room.subject.name }}</p>
         <hr>
     </div>
     {% endfor %}
  </div>
- 
+
+</style>
+

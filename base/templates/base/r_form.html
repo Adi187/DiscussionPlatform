@@ -1,13 +1,67 @@
 {% extends 'mainTemp.html' %}
 
 {% block content %}
-<div>
-    <form method="POST" action="">
-        {% csrf_token %}
-        {{form.as_p}}
+<style>
+    .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #222;
+}
 
-        <input type="submit" value="Submit" />
+.neat-form {
+    background: #333;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: #fff;
+}
+
+.neat-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.neat-form input[type="text"],
+.neat-form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    background-color: #555;
+    color: #fff;
+}
+
+.submit-button {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    background: #555;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background: #333;
+}
+
+</style>
+
+<div class="form-container">
+    <form class="neat-form" method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input class="submit-button" type="submit" value="Submit" />
     </form>
 </div>
-
 {% endblock content %}
+
+
+

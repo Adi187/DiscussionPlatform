@@ -1,24 +1,61 @@
-
-{%extends 'mainTemp.html' %}
+{% extends 'mainTemp.html' %}
 
 {% block content %}
-
 <style>
-    
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.profile-container {
+    margin-top: 50px;
+}
+
+.profile-header {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+}
+
+.profile-username {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.profile-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.feed-component {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 400px;
+}
 </style>
-<h1>{{user.username}}</h1>
-<div>
- <div>
 
- </div>
+<div class="profile-container">
+    <div class="profile-header">
+        <h1 class="profile-username">{{ user.username }}</h1>
+    </div>
 
- <div>
-    {% include 'base/feed_component.html' %}
- </div>
-  {% include 'base/feed_component.html' %}
-
-
- </div>
+    <div class="profile-content">
+            {% include 'base/feed_component.html' %}
+    </div>
 </div>
-
 {% endblock content %}
